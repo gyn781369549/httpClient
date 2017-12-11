@@ -35,8 +35,8 @@ import com.alibaba.fastjson.JSONObject;
 
 
 
-public class httpUtil {
-	private static final Log log = LogFactory.getLog(httpUtil.class);
+public class HttpClientUtil {
+	private static final Log log = LogFactory.getLog(HttpClientUtil.class);
 	private static HttpClient httpClient = getHttpClient();
 	private static HttpClient postClient = null;
 	private static HttpResponse httpResponse = null;
