@@ -1,7 +1,12 @@
 package httpClient.util;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.Date;
@@ -302,9 +307,39 @@ public class HttpClientUtil {
 
 		return httpClient;
 	}
+	/**
+	 * 读取txt文件
+	 * @param fileName
+	 * @return
+	 */
+    public static String readFile(String fileName)  
+    {     
+        String fileContent = "";     
+        try   
+        {       
+            File f = new File(fileName);      
+            if(f.isFile()&&f.exists())  
+            {       
+                InputStreamReader read = new InputStreamReader(new FileInputStream(f),"gbk");       
+                BufferedReader reader=new BufferedReader(read);       
+                String line;       
+                while ((line = reader.readLine()) != null)   
+                {        
+                    fileContent += line;       
+                }         
+                read.close();      
+            }     
+        } catch (Exception e)   
+        {         
+            e.printStackTrace();     
+        }     
+        return fileContent;   
+    }   
 
 	public static void main(String[] args) throws ParseException, IOException {
 		
+		;
+        System.out.println(readFile("C:/Users/Administrator/Documents/GitHub/1758Word/Word文档/15号修改商品促销信息sql/gonggao.txt"));
 		
 	}
 
